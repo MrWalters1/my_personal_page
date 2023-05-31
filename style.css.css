@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: "Brush Script MT", cursive;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.heading {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+h1{
+  position: relative;
+  font-size: clamp(2rem, 10vw, 7rem);
+  line-height: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: red;
+}
+
+h1:before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  color: black;
+  -webkit-text-stroke: 1px black;
+  border-right: 2px solid black;
+  overflow: hidden;
+  animation: move 8s alternate ease-in-out infinite;
+}
+
+h1 span {
+  font-size: 0.25em;
+  line-height: 1em;
+  letter-spacing: 0.02em;
+  display: block;
+  position: relative;
+}
+
+h1 span:before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  color: black;
+  -webkit-text-stroke: 0.6px black;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: move 8s alternate ease-in-out infinite;
+}
+
+/* Animations + media quarries */
+@keyframes move {
+  0% {
+    width: 20%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  font-family: "Brush Script MT", cursive;
+}
+
+p {
+  transform: scale(0.8);
+  animation: scale 2s forwards;
+}
+
+p {
+  display: none;
+  background-color: red;
+  padding: 20px;
+}
+
+div:hover p {
+  display: block;
+}
+
+@keyframes scale {
+  100% {
+    transform: scale(1);
+  }
+}
+
+span {
+  opacity: 0;
+  filter: blur(4px);
+}
+
+@for $i from 1 through 16 {
+  span:nth-child(#{$i}) {
+    animation: fade-in 0.5s $i * 0.1 forwards
+    cubic-bezier(0.11, 0, 0.5, 0);
+  }
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
